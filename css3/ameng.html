@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .zmr_box{
+            width: 310px;
+            margin: 0 auto;
+            position: relative;
+        }
+        /*脸开始*/
+        .zmr_lian{
+            width:310px;height: 300px;
+            border-radius: 146px;
+            border: 2px solid #333;
+            position: relative;
+            z-index: 6;
+            background: radial-gradient(circle at 260px 50px,  #81def5 0%,#0daed7 60%,#084f62 100%);
+            box-shadow: -5px 3px 8px #888888;
+        }
+        .zmr_lianyuan{
+            width: 264px;height: 196px;
+            border: 2px solid #000;
+            border-radius: 150px;
+            position: absolute;
+            top:85px;left: 22px;
+            background: radial-gradient(circle at 260px 50px,  #fff 0%,#fff 80%,#c0c0c0 100%);
+        }
+        .zmr_yanjing_l{
+            width: 72px; height: 83px;
+            position: absolute;
+            border-radius: 35px 35px;
+            border: 2px solid #000;
+            background: #fff;
+            top:-45px;left: 56px;
+            z-index: 3;
+        }
+        .zmr_yanjing_r{
+            width: 72px; height: 83px;
+            position: absolute;
+            border-radius: 35px 35px;
+            border: 2px solid #000;
+            background: #fff;
+            top:-45px;left: 132px;
+            z-index: 3;
+        }
+        .zmr_heiren_l{
+            position: absolute;
+            width: 15px;height: 15px;
+            border-radius: 10px;
+            top:50px;left: 40px;
+            background-color: #333333;
+            transition: left 1s ease;
+        }
+        .zmr_heiren_r{
+            position: absolute;
+            width: 15px;height: 15px;
+            border-radius: 10px;
+            top:50px;left: 40px;
+            background-color: #333333;
+            transition: left 1s ease;
+        }
+        .zmr_bizi{
+            width: 32px;
+            height: 32px;
+            border: 2px solid #000;
+            border-radius: 50px;
+            background: radial-gradient(circle at 22px 12px,  #fff 0%,#c93e00 25%);
+            position: absolute;
+            top: 28px;left: 114px;
+            z-index: 888;
+        }
+        /*胡子*/
+        .zmr_huzi{
+            width: 240px; height: 90px;
+            position: relative;
+            top: 40px;left: 12px;
+            z-index: 12;
+            border-radius: 45px;
+        }
+        .zmr_huzi_l{
+            background: #333;
+            height: 2px; width: 60px;
+            position: absolute;
+            top: 44px;left: 5px;
+        }
+        .zmr_huzi_l:before{
+            content: "";
+            background: #333;
+            height: 2px; width: 60px;
+            position: absolute;
+            top: -25px;left: 5px;
+            transform: rotate(20deg);
+        }
+        .zmr_huzi_l:after{
+            content: "";
+            background: #333;
+            height: 2px; width: 60px;
+            position: absolute;
+            top: 25px;left: 5px;
+            transform: rotate(-20deg);
+        }
+        .zmr_huzi_r{
+            background: #333;
+            height: 2px; width: 60px;
+            position: absolute;
+            top: 44px;right: 5px;
+        }
+        .zmr_huzi_r:before{
+            content: "";
+            background: #333;
+            height: 2px; width: 60px;
+            position: absolute;
+            top: -25px;right: 5px;
+            transform: rotate(160deg);
+        }
+        .zmr_huzi_r:after{
+            content: "";
+            background: #333;
+            height: 2px; width: 60px;
+            position: absolute;
+            top: 25px;right: 5px;
+            transform: rotate(-160deg);
+        }
+        .zmr_zuishu{
+            background: #333;
+            width: 3px; height: 100px;
+            position: absolute;
+            top: 56px;left: 131px;
+            z-index: 10;
+        }
+        .zmr_zuiwan{
+            width: 220px;
+            height: 500px;
+            border-bottom: 3px solid #333;
+            border-radius: 120px;
+            position: absolute;
+            top: -345px;
+            left: 22px;
+            z-index:1;
+            /*overflow: hidden;*/
+        }
+        .zmr_zuiwan1{
+            width: 240px;height: 110px;
+            border-radius: 150px;
+            position: absolute;
+            bottom: 20px;left: -8px;
+            background: radial-gradient(circle at 260px 50px,  #fff 0%,#fff 70%,#fff 100%);
+        }
+        /*脸结束*/
+
+        /*围脖开始*/
+        .zmr_weibo{
+            width: 230px;height: 20px;
+            border: solid 2px #000;
+            background: linear-gradient(  #c13a00,#860900);
+            border-radius: 10px;
+            position: relative;
+            top:-30px;left: 40px;
+            z-index: 999;
+        }
+        .zmr_lindang{
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            position: absolute;
+            top:5px;left: 93px;
+            background: radial-gradient(circle at 25px 15px,  #fbfbfb 0%,#f4ec25 30%,#beb608 100%);
+            box-shadow: -2px 2px 5px #000000;
+            overflow: hidden;
+        }
+        .zmr_lindang_line{
+            width: 60px;height: 2px;
+            background: #f9f12a;
+            border: solid 2px #333;
+            position: absolute;
+            top: 10px;
+        }
+        .zmr_lindang_cir{
+            width: 12px;
+            height: 10px;
+            border-radius: 5px;
+            background: #000;
+            position: absolute;
+            top: 22px;
+            left: 14px;
+        }
+        .zmr_lindang_cirxian{
+            width: 3px;
+            height: 15px;
+            background: #000;
+            position: relative;
+            top: 26px;
+            left: 18px;
+        }
+        .zmr_bai{
+            width:8px;height: 8px;
+            position: absolute;
+            background-color: #ffffff;
+            border-radius: 50%;
+            opacity: 0.4;
+            left:22px;top:8px;
+            z-index: 12;
+            box-shadow: 0 0 2px #ffffff;
+        }
+        /*围脖结束*/
+
+        /*身体开始*/
+        .zmr_shenti{
+            position: absolute;
+            width: 220px;
+            height: 165px;
+            background: -webkit-gradient(linear, right top, left top, from(#07beea),color-stop(0.5, #0073b3),color-stop(0.75,#00b0e0), to(#0096be));
+            border: #333 2px solid;
+            top: 280px;
+            left: 45px;
+            z-index: 6;
+            overflow: hidden;
+            box-shadow: -5px 3px 8px #888888;
+        }
+        .zmr_koudaibax{
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            border-radius: 85px;
+            -webkit-border-radius: 85px;
+            -moz-border-radius: 85px;
+            border: 2px solid #000;
+            background: #FFF;
+            background: radial-gradient(circle at 240px 30px,  #fff 0%,#fff 80%,#c0c0c0 100%);
+            top: -40px;
+            left: 22px;
+        }
+        .zmr_koudai{
+            position: relative;
+            width: 130px;
+            height: 130px;
+            border-radius: 65px; border: 2px solid #000;
+            background: radial-gradient(circle at 240px 20px,  #fff 0%,#fff 75%,#c0c0c0 100%);
+            top: 20px;
+            left: 18px;
+        }
+        .zmr_koudaidang{
+            position: relative;
+            width: 134px;
+            height: 60px;
+            background: radial-gradient(circle at 100px 20px,  #fff 0%,#fff 75%,#fcfcfc 100%);
+
+            border-bottom: 2px solid #000;
+            top: -100px;
+            left: 18px;
+        }
+        /*身体结束*/
+
+        /*脚步开始*/
+        .zmr_foot{
+            position: relative;
+            width: 280px;
+            height: 40px;
+            top: 118px;
+            left: 20px;
+            background-color: #fff;
+            z-index: 444;
+        }
+        .zmr_foot_l{
+            width: 135px;height: 36px;
+            border: 2px solid #333;
+            position: absolute;
+            overflow: hidden;
+            border-radius: 80px 60px 60px 40px;
+            left: -5px;
+            box-shadow: -3px 3px 8px #888888, 3px -3px 8px #888888 inset;
+        }
+        .zmr_foot_r{
+            width: 135px;height: 36px;
+            border: 2px solid #333;
+            position: absolute;
+            left:140px;
+            border-radius: 60px 80px 40px 60px;
+            box-shadow: -3px 3px 8px #888888, 3px -3px 8px #888888 inset;
+        }
+        .zmr_kudang{
+            position: relative;
+            width: 36px;
+            height: 18px;
+            background: #fff;
+            /*background: -webkit-gradient(linear, right top, left bottom, from(#666),color-stop(0.83,#fff), to(#fff));*/
+            /*background: -moz-linear-gradient(right top, #666, #fff 83%, #fff);*/
+            top: -19px;
+            left: 117px;
+            border-top: 2px solid #000;
+            border-right: 2px solid #000;
+            border-left: 2px solid #000;
+            border-top-right-radius: 40px;
+            border-top-left-radius: 40px;
+            box-shadow: -5px 3px 8px #888888 inset;
+        }
+        /*脚步结束*/
+
+        /*手开始*/
+        .zmr_shou_l{
+            position: absolute;
+            top: 272px;
+            left: -46px;
+            width: 100px;
+            height: 100px;
+        }
+        .zmr_shou_larm{
+            position: relative;
+            width: 80px;
+            height: 50px;
+            background: #0096be;
+            border: solid 1px #000;
+            z-index: -1;
+            top: 34px;
+            left: 26px;
+            transform: rotate(145deg);
+            z-index: 8;
+            box-shadow: 3px -3px 8px #333;
+        }
+        .zmr_shou_larmzhe{
+            position: relative;
+            width: 23px;
+            height: 60px;
+            background: #029bc4;
+            top: -32px;
+            left: 92px;
+            z-index: 889;
+        }
+        .zmr_shou_lline{
+            width:2px;height: 20px;
+            position: absolute;
+            top:40px;
+            left:-1px;
+            background-color: #333;
+            z-index: 555;
+        }
+        .zmr_shou_lcir{
+            position: absolute;
+            top:50px;left: 0px;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            border: 2px solid #000;
+            z-index: 888;
+            background-color: #fff;
+            /*box-shadow: 1px -1px 10px #000 inset;*/
+            background: radial-gradient(circle at 40px 12px,  #fff 65%,#333333 100%);
+        }
+
+        .zmr_shou_r{
+            position: absolute;
+            top: 272px;
+            left: 226px;
+            width: 100px;
+            height: 100px;
+        }
+        .zmr_shou_rarm{
+            position: relative;
+            width: 80px;
+            height: 50px;
+            background: #05b1e1;
+            border: solid 1px #000;
+            z-index: -1;
+            top: 34px;
+            left: 26px;
+            transform: rotate(-145deg);
+            z-index: 8;
+            box-shadow: 3px -3px 8px #333, 3px 3px 8px #333 inset;
+        }
+        .zmr_shou_rarmzhe{
+            position: relative;
+            width: 24px;
+            height: 60px;
+            background: #05b1e1;
+            top: -32px;
+            left: 18px;
+            z-index: 889;
+        }
+        .zmr_shou_rline{
+            width:2px;height: 20px;
+            position: absolute;
+            top:40px;
+            left:23px;
+            background-color: #333;
+            z-index: 555;
+        }
+        .zmr_shou_rcir{
+            position: absolute;
+            top:50px;left: 70px;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            border: 2px solid #000;
+            z-index: 888;
+            background-color: #fff;
+            /*box-shadow: 1px -1px 10px #000 inset;*/
+            background: radial-gradient(circle at 40px 12px,  #fff 65%,#333333 100%);
+        }
+        /*手结束*/
+    </style>
+</head>
+<body>
+
+<div class="zmr_box">
+    <div class="zmr_lian">
+        <div class="zmr_lianyuan">
+            <div class="zmr_yanjing_l"><div class="zmr_heiren_l"></div></div>
+            <div class="zmr_yanjing_r"><div class="zmr_heiren_r"></div></div>
+            <div class="zmr_bizi"></div>
+            <div class="zmr_huzi">
+                <div class="zmr_huzi_l"></div>
+                <div class="zmr_huzi_r"></div>
+            </div>
+            <div class="zmr_zuishu"></div>
+            <div class="zmr_zuiwan"><div class="zmr_zuiwan1"></div></div>
+        </div>
+    </div>
+    <div class="zmr_weibo">
+        <div class="zmr_lindang">
+            <div class="zmr_lindang_line"></div>
+            <div class="zmr_lindang_cir"></div>
+            <div class="zmr_lindang_cirxian"></div>
+            <div class="zmr_bai"></div>
+        </div>
+    </div>
+    <div class="zmr_shenti">
+        <div class="zmr_koudaibax">
+            <div class="zmr_koudai"></div>
+            <div class="zmr_koudaidang"></div>
+        </div>
+    </div>
+    <div class="zmr_foot">
+        <div class="zmr_foot_l"></div>
+        <div class="zmr_foot_r"></div>
+        <div class="zmr_kudang"></div>
+    </div>
+    <div class="zmr_shou_l">
+        <div class="zmr_shou_larm"></div>
+        <div class="zmr_shou_larmzhe"><div class="zmr_shou_lline"></div></div>
+        <div class="zmr_shou_lcir"></div>
+    </div>
+    <div class="zmr_shou_r">
+        <div class="zmr_shou_rarm"></div>
+        <div class="zmr_shou_rarmzhe"><div class="zmr_shou_rline"></div></div>
+        <div class="zmr_shou_rcir"></div>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+
+    var zmr_heiren_l=document.querySelector(".zmr_heiren_l")
+    var zmr_heiren_r=document.querySelector(".zmr_heiren_r")
+
+    var flag=1
+    var t1=setInterval(function () {
+        if(flag==1){
+            flag=0
+            zmr_heiren_l.style.left=20+"px";
+            zmr_heiren_r.style.left=20+"px";
+        }else if(flag==0){
+            flag=1
+            zmr_heiren_l.style.left=40+"px";
+            zmr_heiren_r.style.left=40+"px";
+        }
+
+    },2000)
+
+</script>

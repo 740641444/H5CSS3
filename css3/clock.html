@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .zmr_clock{
+            width: 200px;height: 200px;
+            border: 2px solid #000;border-radius: 50%;
+            background: radial-gradient( #ccc,#eee);
+            position: absolute;
+            top:0;left:0;bottom: 0;right: 0;
+            margin: auto;
+            box-shadow: 0 0 10px #000;
+        }
+        .zmr_cir{
+            width: 12px;height: 12px;margin: auto;z-index: 88;
+            background-color: purple;border-radius: 50%;
+            position: absolute;top: 0;bottom: 0;left: 0;right: 0;
+        }
+        .zmr_12{
+            position: absolute;top:15px;left: 90px;
+        }
+        .zmr_6{
+            position: absolute;bottom:15px;left: 95px;
+        }
+        .zmr_9{
+            position: absolute;top: 90px;left:20px;
+        }
+        .zmr_3{
+            position: absolute;bottom:90px;left: 170px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="zmr_clock">
+    <div class="zmr_cir"></div>
+    <div class="zmr_12">12</div>
+    <div class="zmr_6">6</div>
+    <div class="zmr_3">3</div>
+    <div class="zmr_9">9</div>
+</div>
+
+</body>
+</html>
+<script>
+
+    var zmr_clock=document.querySelector(".zmr_clock")
+
+
+
+//    动起来
+    var date=new Date();
+    var h=date.getHours();
+    var m=date.getMinutes();
+    var s=date.getSeconds();
+
+    var hzhen=createzhen(6,28,"#333",h*30+m/60*30)
+    var mzhen=createzhen(4,48,"#888888",m*6)
+    var szhen=createzhen(2,80,"plum",s*6)
+
+    var t1=setInterval(function () {
+        var date=new Date();
+        h=date.getHours();
+        m=date.getMinutes();
+        s=date.getSeconds();
+
+        hzhen.style.transform="rotate("+(h*30+m/60*30)+"deg)";
+        mzhen.style.transform="rotate("+(m*6)+"deg)";
+        szhen.style.transform="rotate("+(s*6)+"deg)";
+    },1000)
+
+//    创建针
+
+
+    function createzhen(w,h,c,d) {
+        var zhen=document.createElement("div");
+        zhen.style.cssText="width:"+w+"px;height:"+h+"px;position:absolute;top:"+(100-h)+"px;left:"+(100-w/2)+"px;background-color:"+c
+        zhen.style.transformOrigin=w/2+"px "+h +"px";
+        zhen.style.transform="rotate("+d+"deg)";
+        zmr_clock.appendChild(zhen)
+        return zhen
+    }
+
+//    创建表盘
+    createkedu()
+    function createkedu() {
+        for(var i=0;i<60;i++){
+            var kedu=document.createElement("div");
+            kedu.style.cssText="width:4px;height:10px; background-color:#888 ;border:1px solid #000;position:absolute;top:0;left:97px";
+            kedu.style.transformOrigin="3px 100px";
+            if(i%5==0){
+                kedu.style.height=16+"px";
+                kedu.style.backgroundColor="purple";
+            }
+            kedu.style.transform="rotate("+(6*i)+"deg)";
+            zmr_clock.appendChild(kedu)
+        }
+    }
+
+</script>
