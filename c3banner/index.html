@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .zmr_bannerbox{
+            width: 800px;height: 400px;
+            position: absolute;
+            top:0;bottom:0;left: 0;right: 0;
+            margin:auto;
+        }
+
+    </style>
+</head>
+<body>
+<div class="zmr_bannerbox"></div>
+</body>
+</html>
+<script>
+
+function banner() {
+    var cenglen=8;
+    var bannerbox=document.querySelector(".zmr_bannerbox");
+    var widths=800;
+    var heights=400;
+    var arr=[];
+//    创建cenglen个层
+    for(var i=0;i<cenglen;i++){
+//        创建ceng
+        var ceng=document.createElement("div");
+        ceng.style.cssText="width:"+widths+"px;height:"+(heights/cenglen)+"px;position:relative;transform-style:preserve-3d;transition:transform 2s linear "+0.2*i+"s;transform-origin:center center -"+widths/2+"px";
+//        创建6个面
+        for(var j=0;j<6;j++){
+            var mian=document.createElement("div");
+            mian.style.cssText="width:100%;height:100%;position:absolute;left:0;top:0;";
+            if(j==0){
+//                正面
+                mian.style.background="url(images/1.jpg)";
+                mian.style.backgroundPositionY=-i*(heights/cenglen)+"px";
+//                mian.style.display="none";
+            }else if(j==1){
+//                左面
+                mian.style.background="url(images/2.jpg)";
+                mian.style.backgroundPositionY=-i*(heights/cenglen)+"px";
+                mian.style.transformOrigin="right";
+                mian.style.transform="rotateY(-90deg) translate3d(0,0,"+widths+"px)";
+            }else if(j==2){
+//                后面
+                mian.style.background="url(images/3.jpg)";
+                mian.style.backgroundPositionY=-i*(heights/cenglen)+"px";
+                mian.style.transformOrigin="right";
+                mian.style.transform=" rotateY(180deg) translate3d("+widths+"px,0,"+widths+"px)";
+//                mian.style.display="none";
+            }else if(j==3){
+//                右面
+                mian.style.background="url(images/4.jpg)";
+                mian.style.backgroundPositionY=-i*(heights/cenglen)+"px";
+                mian.style.transformOrigin="right";
+                mian.style.transform="rotateY(-270deg) translate3d("+widths+"px,0,0)";
+            }else if(j==4){
+                mian.style.backgroundColor="#000";
+                mian.style.cssText="width:"+widths+"px;height:"+widths+"px;";
+                mian.style.transformOrigin="bottom";
+                mian.style.transform="rotateX(90deg)";
+                mian.style.transform="translate3d(0,-"+heights+"px,0)";
+            }else if(j==5){
+                mian.style.backgroundColor="#000";
+                mian.style.cssText="width:"+widths+"px;height:"+widths+"px;";
+                mian.style.transformOrigin="top";
+                mian.style.transform="rotateX(90deg)";
+                mian.style.transform="translate3d(0,"+heights+"px,0)";
+            }
+            ceng.appendChild(mian);
+        }
+        arr.push(ceng)
+        bannerbox.appendChild(ceng);
+    }
+
+    var num=0;
+    var t1=setInterval(function () {
+        num+=90
+        for(var i=0;i<arr.length;i++){
+            arr[i].style.transform="rotateY("+num+"deg)"
+        }
+    },5000)
+
+    window.onblur=function () {
+        clearInterval(t1)
+        console.log(1)
+    }
+    window.onfocus=function () {
+        console.log(2)
+        t1=setInterval(function () {
+            num+=90
+            for(var i=0;i<arr.length;i++){
+                arr[i].style.transform="rotateY("+num+"deg)"
+            }
+        },5000)
+    }
+
+}
+
+banner()
+
+</script>
