@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        html,body{
+            width:100%;height: 100%;
+            overflow-x: hidden;overflow-y: hidden;
+        }
+        *{
+            margin:0;padding: 0;
+        }
+        .scene{
+            width:100%;height: 100%;
+            position: absolute;top: 0;left: 0;
+            perspective: 500px;
+
+        }
+        .scene .room{
+            width: 100%;height: 100%;
+            position: absolute;top: 0;left: 0;
+            left:0;top:0;transform-style: preserve-3d;
+            text-align: center;
+            line-height: 600px;
+            font-size: 50px;
+            /*transform-origin: center center center;*/
+            transition: transform 3s linear;
+            transform: translateZ(650px);
+        }
+        .scene .room:hover{
+            transform:translateZ(650px) rotateY(180deg);
+        }
+        .scene .room div{
+            width: 100%;height: 100%;
+            position: absolute;top: 0;left: 0;
+            backface-visibility: hidden;transform-style: preserve-3d;
+        }
+        .scene .room .fangding{
+            background: radial-gradient(#fff,#666666);
+            transform-origin: top;
+            transform: rotateX(-90deg);
+            box-shadow: 0 0 150px #666666 inset;
+        }
+        .scene .room .diban{
+            background: radial-gradient(#fff,#666666);
+            transform-origin: top;
+            transform: rotateX(90deg);
+            box-shadow: 0 0 150px #666666 inset;
+        }
+        /*.scene .room .diban{*/
+            /*background: radial-gradient(#fff,#666666);*/
+            /*transform-origin: bottom;*/
+            /*transform: rotateX(90deg);*/
+            /*box-shadow: 0 0 150px #666666 inset;*/
+        /*}*/
+        .scene .room .zuo{
+            background: radial-gradient(#fff,#666666);
+            transform-origin: left;
+            transform: rotateY(90deg);
+            box-shadow: 0 0 150px #666666 inset;
+        }
+        .scene .room .qian{
+            background: radial-gradient(#fff,#666666);
+            transform-origin: left;
+            box-shadow: 0 0 150px #666666 inset;
+        }
+        .scene .room .you{
+            background: radial-gradient(#fff,#666666);
+            transform-origin: right;
+            transform: rotateY(-90deg);
+            box-shadow: 0 0 150px #666666 inset;
+        }
+        .scene .room .hou{
+            background: radial-gradient(#fff,#666666);
+            transform-origin: right;
+            /*transform: rotateY(-90deg);*/
+            box-shadow: 0 0 150px #666666 inset;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="scene">
+    <div class="room">
+        <div class="fangding">房顶</div>
+        <div class="diban">地板</div>
+        <div class="zuo">左面</div>
+        <div class="qian">前面</div>
+        <div class="you">右边</div>
+
+        <div class="hou">后面后面</div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+
+
+    var scene=document.querySelector(".scene");
+    var room=document.querySelector(".room");
+    //屏幕的宽高
+    var clientW=document.documentElement.clientWidth;
+    var clientH=document.documentElement.clientHeight;
+//    room.style.transformOrigin="center center "+clientW/2+"px"
+
+    var qian=document.querySelector(".qian");
+    var fangding=document.querySelector(".fangding");
+    var diban=document.querySelector(".diban");
+    var hou=document.querySelector(".hou");
+    fangding.style.width=diban.style.width=fangding.style.height=diban.style.height=clientW+"px";
+    //    diban.style.top=-(clientW-clientH)+"px";
+    qian.style.transform="translateZ(-"+clientW+"px)";
+    diban.style.transform="rotateX(90deg) translateY(-"+clientW+"px) translateZ(-"+clientH+"px)";
+//    diban.style.transform="rotateX(90deg)translateZ("+(clientW-clientH)+"px)";
+    hou.style.transform="rotateY(180deg) translateX("+clientW+"px)"
+
+    room.style.transformOrigin="center center -"+clientW/2+"px"
+//    room.style.transform="translateZ("+clientW/2+"px)"
+
+</script>
