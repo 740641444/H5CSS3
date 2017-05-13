@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		
+		canvas{
+			position: absolute;
+			top: 0;left: 0;right: 0;bottom: 0;
+			margin: auto;background: #cccccc;
+			cursor:none;
+		}
+		
+	</style>
+	<body>
+		<canvas id="" width="800" height="500"></canvas>
+	</body>
+</html>
+
+<script>
+	
+var canvas=document.querySelector("canvas")
+var cobj=canvas.getContext("2d")
+
+
+
+var x,y
+canvas.onmousemove=function(e){
+	x=e.offsetX;
+	y=e.offsetY;	
+}
+function getcolor(){
+	return Math.floor(256*Math.random())
+}
+function arc(){
+	this.x=x;
+	this.y=y;
+	this.r=2+3*Math.random();
+	this.color="rgba("+getcolor()+","+getcolor()+","+getcolor()+",1)"
+	    this.speedx=(Math.random()*6-3);
+        this.speedy=(Math.random()*2+10);
+	this.zhongli=0.3;
+}
+arc.prototype={
+	draw:function(){
+		cobj.save()
+		cobj.translate(this.x,this.y)
+		cobj.beginPath()
+		cobj.arc(0,0,this.r,0,2*Math.PI)
+		cobj.fillStyle=this.color
+        cobj.fill()
+		cobj.restore()
+		
+	},
+	update:function(){
+		this.speedy-=this.zhongli;
+    	this.x+=this.speedx
+		this.y-=this.speedy	
+	}
+}
+
+arr1=[];
+var t1=setInterval(function(){
+	cobj.clearRect(0,0,canvas.width,canvas.height)
+	
+	var arcobj=new arc()
+	arr1.push(arcobj)
+	
+	for(var i=0;i<arr1.length;i++){
+		arr1[i].draw()
+		arr1[i].update();
+		if(arr1.length>500){
+			arr1.shift()
+		}
+	}
+	
+},10)
+
+
+
+
+	
+</script>
